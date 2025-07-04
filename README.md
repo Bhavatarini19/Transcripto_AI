@@ -1,5 +1,5 @@
 
-# 📹📝 Transcripto AI
+# 📹📝 Transcripto AI   **🔗 [Live App on Streamlit Cloud](https://transcripto-ai.streamlit.app/)**
 
 **Transcripto AI** is a simple and effective Streamlit app that lets you **summarize and translate YouTube videos** using their transcripts. It uses OpenAI’s GPT-4o model to provide clear summaries in a variety of languages. Ideal for students, researchers, professionals, or anyone looking to save time understanding video content.
 
