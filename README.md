@@ -36,8 +36,8 @@ cd Transcripto_AI
 ### 2. Set Up a Virtual Environment
 
 ```bash
-python -m venv taivenv
-source taivenv/bin/activate  # On Windows: taivenv\Scripts\activate
+python -m venv venv1
+source venv1/bin/activate  # On Windows: venv1\Scripts\activate
 ```
 
 ### 3. Install Required Libraries
