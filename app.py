@@ -3,6 +3,9 @@ import re
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisabled, VideoUnavailable
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
+from pathlib import Path
 
 st.title("📹📝 Transcripto AI")
 st.markdown("Summarize and translate YouTube videos into your choosen language.")
@@ -18,7 +21,6 @@ st.sidebar.markdown(
     """
 )
 url = st.text_input("Enter YouTube Video URL")
-api_key = st.text_input("Enter Your OpenAI API key")
 supported_languages = [
     "English", "Tamil", "Hindi", "French", "German", "Spanish", "Japanese", "Korean",
     "Chinese", "Arabic", "Portuguese", "Italian", "Russian", "Turkish", "Indonesian",
@@ -58,6 +60,10 @@ def get_full_text(transcript):
 
 def contact_openai(transcript):
     try:
+        
+        # load_dotenv(dotenv_path=".env")
+        load_dotenv()
+        api_key = os.getenv("OPENAI_API_KEY")
         system_prompt = "You are an assistant that analyzes the contents of a transcript\
         and provide a title and short summary in the mentioned langugae, ignoring text that is unwanted or navigation related.\
             respond in markdown."
@@ -78,19 +84,13 @@ def contact_openai(transcript):
 
         return response.choices[0].message.content
     except Exception as e:
-        st.error("⚠️ OpenAI error")
+        st.error("⚠️ OpenAI error: " + str(e))
 
 if st.button("Summarize"):
     video_id = extract_video_id(url)
     if not video_id:
         st.error("⚠️ Invalid Youtube URL! Please check and try again.")
     else: 
-        if not api_key:
-            st.error("⚠️ Please enter the OpenAI API key to proceed.")
-        elif not api_key.startswith("sk-proj-"):
-            st.error("⚠️ An API key was found but it doesn't start with 'sk-proj-' \n Please enter the right OpenAI API key.")
-        else:
-            api_key = api_key.strip()
             with st.spinner("🔍 Fetching transcript..."):
                 transcript = get_transcript(video_id)
                 full_text = get_full_text(transcript)
