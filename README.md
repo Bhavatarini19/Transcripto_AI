@@ -1,65 +1,72 @@
+
 # 📹📝 Transcripto AI
 
-**Transcripto AI** is a Streamlit-based web application that summarizes and translates YouTube videos using their transcripts. It leverages OpenAI's GPT-4o model to generate accurate, markdown-formatted summaries in your selected language.
+**Transcripto AI** is a simple and effective Streamlit app that lets you **summarize and translate YouTube videos** using their transcripts. It uses OpenAI’s GPT-4o model to provide clear summaries in a variety of languages. Ideal for students, researchers, professionals, or anyone looking to save time understanding video content.
 
 ---
 
-## 🚀 Features
+## ✨ What It Does
 
-- 🔗 Paste any YouTube video URL
-- 📝 Auto-fetches the transcript (manual or auto-generated)
-- 🤖 Summarizes the video using GPT-4o
-- 🌍 Supports 25+ output languages for translated summaries
-- 🧠 Clean markdown format with title + bullet points
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** Streamlit
-- **Backend:** Python
-- **LLM API:** OpenAI GPT-4o
-- **Transcripts:** YouTube Transcript API
+- 🔗 Accepts any YouTube video URL  
+- 🔍 Fetches transcript (manual or auto-generated)  
+- 🤖 Summarizes video content using OpenAI GPT-4o  
+- 🌍 Translates summary into your selected language  
+- 🧾 Clean and readable markdown output  
 
 ---
 
-## 🔧 Setup Instructions
+## 🧰 Tech Stack
+
+- **UI & Frontend:** Streamlit  
+- **Backend:** Python  
+- **Language Model:** OpenAI GPT-4o  
+- **Transcripts:** YouTube Transcript API  
+
+---
+
+## 🛠️ Local Setup Instructions
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/your-username/transcripto-ai.git
-cd transcripto-ai
+git clone https://github.com/Bhavatarini19/Transcripto_AI.git
+cd Transcripto_AI
 ```
 
-### 2. Create a Virtual Environment
+### 2. Set Up a Virtual Environment
+
 ```bash
-python -m venv namevenv
-source namevenv/bin/activate  # On Windows: namevenv\Scripts\activate
+python -m venv taivenv
+source taivenv/bin/activate  # On Windows: taivenv\Scripts\activate
 ```
 
-### 3. Install Dependencies
+### 3. Install Required Libraries
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Set the OpenAI API Key
+### 4. Add Your OpenAI API Key
 
-#### Option A: Using `.env` locally
-Create a `.env` file in the project root:
+#### Option A: Using a `.env` File (Local)
+
+Create a `.env` file in the project root directory and add:
+
 ```env
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+OPENAI_API_KEY=sk-your-api-key-here
 ```
 
-#### Option B: On Streamlit Cloud (Recommended)
-Go to your [Streamlit Cloud dashboard](https://streamlit.io/cloud) → App Settings → **Secrets** tab  
-Paste:
+#### Option B: Streamlit Cloud Deployment
+
+In your [Streamlit Cloud app](https://streamlit.io/cloud), go to **Settings > Secrets** and paste:
+
 ```toml
-OPENAI_API_KEY = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OPENAI_API_KEY = "sk-your-api-key-here"
 ```
 
 ---
 
-## ▶️ Run Locally
+## ▶️ Run the App Locally
 
 ```bash
 streamlit run app.py
@@ -69,16 +76,21 @@ Then open `http://localhost:8501` in your browser.
 
 ---
 
-## 🌐 Deployment
+## 🌍 Deployment on Streamlit Cloud
 
-This app is ready for deployment on [Streamlit Cloud](https://streamlit.io/cloud). Just push your code to GitHub and deploy using their UI.  
-Make sure to configure `OPENAI_API_KEY` in the **Secrets Manager**.
+1. Push your app to a GitHub repository.
+2. Go to [Streamlit Cloud](https://streamlit.io/cloud).
+3. Create a new app pointing to your repo.
+4. Add the `OPENAI_API_KEY` in the **Secrets Manager**.
+5. Deploy and share your app URL.
 
 ---
 
-## 📎 Sample Use Case
+## 💡 Use Cases
 
-- Students summarizing long lectures
-- Researchers translating domain videos
-- Professionals extracting key insights from video content
+- Summarize long educational videos
+- Translate key insights for multilingual users
+- Quickly understand lecture, tech talks, or webinars
+
+---
 
