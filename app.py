@@ -61,7 +61,6 @@ def get_full_text(transcript):
 def contact_openai(transcript):
     try:
         
-        # load_dotenv(dotenv_path=".env")
         load_dotenv()
         api_key = os.getenv("OPENAI_API_KEY")
         system_prompt = "You are an assistant that analyzes the contents of a transcript\
