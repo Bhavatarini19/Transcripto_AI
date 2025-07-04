@@ -1,0 +1,6 @@
+ipykernel
+youtube-transcript-api
+dotenv
+openai
+ipython
+streamlit
