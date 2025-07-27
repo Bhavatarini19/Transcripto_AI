@@ -62,8 +62,9 @@ def get_full_text(transcript):
 def contact_openai(transcript):
     try:
         
-        load_dotenv()
-        api_key = os.getenv("OPENAI_API_KEY")
+        # load_dotenv()
+        # api_key = os.getenv("OPENAI_API_KEY")
+        api_key = st.secrets["OPENAI_API_KEY"]
         system_prompt = "You are an assistant that analyzes the contents of a transcript\
         and provide a title and short summary in the mentioned langugae, ignoring text that is unwanted or navigation related.\
             respond in markdown."
