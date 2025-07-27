@@ -1,27 +1,33 @@
+# 📝 Transcripto AI
 
-# 📹📝 Transcripto AI   
 **🔗 [Click to open transcripto-ai app](https://transcripto-ai.streamlit.app/)**
 
 **Transcripto AI** is a simple and effective Streamlit app that lets you **summarize and translate YouTube videos** using their transcripts. It uses OpenAI’s GPT-4o model to provide clear summaries in a variety of languages. Ideal for students, researchers, professionals, or anyone looking to save time understanding video content.
 
 ---
 
+## 📽️ Demo
+
+![MailMate AI Demo](assets/transcriptoAIDemo.gif)
+
+---
+
 ## ✨ What It Does
 
-- 🔗 Accepts any YouTube video URL  
-- 🔍 Fetches transcript (manual or auto-generated)  
-- 🤖 Summarizes video content using OpenAI GPT-4o  
-- 🌍 Translates summary into your selected language  
-- 🧾 Clean and readable markdown output  
+- Accepts any YouTube video URL
+- Fetches transcript (manual or auto-generated)
+- Summarizes video content using OpenAI GPT-4o
+- Translates summary into your selected language
+- Clean and readable markdown output
 
 ---
 
 ## 🧰 Tech Stack
 
-- **UI & Frontend:** Streamlit  
-- **Backend:** Python  
-- **Language Model:** OpenAI GPT-4o  
-- **Transcripts:** YouTube Transcript API  
+- **UI & Frontend:** Streamlit
+- **Backend:** Python
+- **Language Model:** OpenAI GPT-4o
+- **Transcripts:** YouTube Transcript API
 
 ---
 
@@ -94,4 +100,3 @@ Then open `http://localhost:8501` in your browser.
 - Quickly understand lecture, tech talks, or webinars
 
 ---
-

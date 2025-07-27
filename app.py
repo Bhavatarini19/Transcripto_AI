@@ -2,7 +2,7 @@ import streamlit as st
 import re
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisabled, VideoUnavailable
-from openai import OpenAI
+from openai import OpenAI 
 from dotenv import load_dotenv
 import os
 from pathlib import Path
@@ -49,8 +49,7 @@ def get_transcript(video_id):
                 return auto.fetch()
             except NoTranscriptFound:
                 return None
-    except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable, Exception) as e:
-        print(f"Transcript Error: {e}")
+    except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable, Exception):
         return None
 
 def get_full_text(transcript):
@@ -61,31 +60,28 @@ def get_full_text(transcript):
 
 def contact_openai(transcript):
     try:
-        
-        # load_dotenv()
-        # api_key = os.getenv("OPENAI_API_KEY")
-        api_key = st.secrets["OPENAI_API_KEY"]
-        system_prompt = "You are an assistant that analyzes the contents of a transcript\
-        and provide a title and short summary in the mentioned langugae, ignoring text that is unwanted or navigation related.\
-            respond in markdown."
-        user_prompt = f"You are looking at transcript of a youtube video and it is as follows\
-            Please provide a title and short summary as paragraph with points in them for this video transcript in {language.lower()} in markdown.\n\n"
+        load_dotenv()
+        api_key = os.getenv("OPENAI_API_KEY")
+        client = OpenAI(api_key=api_key)
+
+        system_prompt = "You are an assistant that analyzes the contents of a transcript and provide a title and short summary in the mentioned language, ignoring text that is unwanted or navigation related. Respond in markdown."
+        user_prompt = f"You are looking at transcript of a YouTube video and it is as follows:\nPlease provide a title and short summary as paragraph with points in them for this video transcript in {language.lower()} in markdown.\n\n"
         user_prompt += transcript
 
         message = [
-        {"role" : "system", "content" : system_prompt},
-        {"role" : "user", "content" : user_prompt}
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
         ]
-        
-        openai = OpenAI(api_key=api_key)
-        response = openai.chat.completions.create(
-            model = "gpt-4o-mini",
-            messages = message
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=message
         )
 
         return response.choices[0].message.content
     except Exception as e:
         st.error("⚠️ OpenAI error: " + str(e))
+
 
 if st.button("Summarize"):
     video_id = extract_video_id(url)
