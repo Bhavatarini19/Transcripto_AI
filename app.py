@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-st.title("📹📝 Transcripto AI")
+st.title("📝 Transcripto AI")
 st.markdown("Summarize and translate YouTube videos into your choosen language.")
-st.sidebar.markdown("### ℹ️ About Transcripto AI")
+st.sidebar.markdown("### 📝 **About**")
 st.sidebar.markdown(
     """
     Transcripto AI uses **YouTube transcripts** and **OpenAI GPT-4o** to:
@@ -49,7 +49,8 @@ def get_transcript(video_id):
                 return auto.fetch()
             except NoTranscriptFound:
                 return None
-    except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable, Exception):
+    except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable, Exception) as e:
+        print(f"Transcript Error: {e}")
         return None
 
 def get_full_text(transcript):
